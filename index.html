@@ -3,143 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AUREVIA - Pink Paradise Store</title>
+    <title>Aurevia – Pink Paradise</title>
     <link rel="stylesheet" href="aurevia.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
+    <!--  floating flower backdrop  -->
+    <div class="flower-field"></div>
+
     <header class="header">
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="logo">
-                    <h1>AUREVIA <span class="pink-crown">👑</span></h1>
-                    <span class="logo-subtitle">PINK PARADISE</span>
+        <nav class="nav-bar">
+            <div class="nav-center">
+                <div class="brand">
+                    <h1 class="brand-name">Aurevia <span class="flower-emoji">🌸</span></h1>
+                    <p class="brand-tag">Pink Paradise</p>
                 </div>
-                <div class="nav-menu">
-                    <a href="#perfumes" class="nav-link">Perfumes</a>
-                    <a href="#bags" class="nav-link">Bags</a>
-                    <a href="#plushies" class="nav-link">Plushies</a>
+                <div class="links">
+                    <a href="#perfumes" class="link">Perfumes</a>
+                    <a href="#bags" class="link">Bags</a>
+                    <a href="#plushies" class="link">Plushies</a>
                 </div>
-                <div class="cart-icon" onclick="toggleCart()">
+                <div class="cart-bag" onclick="toggleCart()">
                     <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-count" id="cartCount">0</span>
+                    <span class="cart-bubble" id="cartCount">0</span>
                 </div>
             </div>
         </nav>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
-        <div class="hero-content">
+        <div class="hero-text">
             <h2 class="hero-title">Welcome to Pink Paradise</h2>
-            <p class="hero-subtitle">Curated collections for the modern princess</p>
-            <button class="cta-button" onclick="scrollToSection('perfumes')">Shop Now</button>
+            <p class="hero-sub">Curated collections for the modern princess</p>
+            <button class="hero-btn" onclick="scrollToSec('perfumes')">Explore</button>
         </div>
     </section>
 
-    <!-- GIRL PERFUMES -->
-    <section id="perfumes" class="category-window">
+    <!-- 3 separate windows -->
+    <section id="perfumes" class="cat-window">
         <div class="container">
-            <h2 class="category-title">Princess Perfumes</h2>
-            <div class="products-grid" id="perfumesGrid"></div>
+            <h2 class="window-title">Princess Perfumes</h2>
+            <div class="item-grid" id="perfumesGrid"></div>
         </div>
     </section>
 
-    <!-- GIRL BAGS -->
-    <section id="bags" class="category-window">
+    <section id="bags" class="cat-window">
         <div class="container">
-            <h2 class="category-title">Designer Bags</h2>
-            <div class="products-grid" id="bagsGrid"></div>
+            <h2 class="window-title">Designer Bags</h2>
+            <div class="item-grid" id="bagsGrid"></div>
         </div>
     </section>
 
-    <!-- PLUSHIES -->
-    <section id="plushies" class="category-window">
+    <section id="plushies" class="cat-window">
         <div class="container">
-            <h2 class="category-title">Kawaii Plushies</h2>
-            <div class="products-grid" id="plushiesGrid"></div>
+            <h2 class="window-title">Kawaii Plushies</h2>
+            <div class="item-grid" id="plushiesGrid"></div>
         </div>
     </section>
 
     <!-- Cart Sidebar -->
-    <div class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
+    <div class="cart-side" id="cartSide">
+        <div class="cart-head">
             <h3>My Pink Cart</h3>
             <button class="close-cart" onclick="toggleCart()">&times;</button>
         </div>
-        <div class="cart-items" id="cartItems"></div>
-        <div class="cart-footer">
-            <div class="cart-total">
-                <strong>Total: ₱<span id="cartTotal">0</span></strong>
-            </div>
-            <button class="checkout-btn" onclick="proceedToCheckout()">Checkout</button>
+        <div class="cart-body" id="cartItems"></div>
+        <div class="cart-foot">
+            <div class="cart-total">Total: ₱<span id="cartTotal">0</span></div>
+            <button class="checkout" onclick="goCheckout()">Checkout</button>
         </div>
     </div>
 
     <!-- Payment Modal -->
-    <div class="modal" id="paymentModal">
-        <div class="modal-content payment-modal">
-            <div class="modal-header">
-                <h3>Payment Information</h3>
-                <button class="close-modal" onclick="closePaymentModal()">&times;</button>
+    <div class="modal" id="payModal">
+        <div class="modal-box">
+            <div class="modal-head">
+                <h3>Payment</h3>
+                <button class="close-modal" onclick="closePayModal()">&times;</button>
             </div>
-            <div class="payment-methods">
-                <div class="payment-method" onclick="selectPayment('gcash')">
+            <div class="pay-methods">
+                <div class="pay-card" onclick="pickPay('gcash')">
                     <img src="https://1000logos.net/wp-content/uploads/2023/05/GCash-Logo.png" alt="GCash">
                     <span>GCash</span>
                 </div>
-                <div class="payment-method" onclick="selectPayment('card')">
+                <div class="pay-card" onclick="pickPay('card')">
                     <i class="fas fa-credit-card"></i>
                     <span>Card</span>
                 </div>
-                <div class="payment-method" onclick="selectPayment('cod')">
-                    <i class="fas fa-money-bill"></i>
-                    <span>Cash on Delivery</span>
+                <div class="pay-card" onclick="pickPay('cod')">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <span>COD</span>
                 </div>
             </div>
-            <div id="paymentForm" class="payment-form" style="display: none;">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" id="customerName" placeholder="Your name">
+            <div id="payForm" class="pay-form" style="display:none;">
+                <input type="text" id="custName" placeholder="Full Name">
+                <input type="tel" id="custPhone" placeholder="09XX XXX XXXX">
+                <div id="cardOpts" style="display:none;">
+                    <input type="text" id="cardNum" placeholder="Card Number">
+                    <input type="text" id="cardExp" placeholder="MM/YY">
+                    <input type="text" id="cardCVV" placeholder="CVV">
                 </div>
-                <div class="form-group">
-                    <label>Mobile Number</label>
-                    <input type="tel" id="customerPhone" placeholder="09XX XXX XXXX">
-                </div>
-                <div class="form-group" id="cardFields" style="display: none;">
-                    <label>Card Number</label>
-                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456">
-                    <label>Expiry Date</label>
-                    <input type="text" id="expiryDate" placeholder="MM/YY">
-                    <label>CVV</label>
-                    <input type="text" id="cvv" placeholder="123">
-                </div>
-                <button class="pay-btn" onclick="processPayment()">Pay Now</button>
+                <button class="pay-now" onclick="processPay()">Pay Now</button>
             </div>
         </div>
     </div>
 
-    <!-- Success Modal -->
-    <div class="modal" id="successModal">
-        <div class="modal-content success-modal">
-            <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+    <!-- Success -->
+    <div class="modal" id="succModal">
+        <div class="succ-box">
+            <div class="succ-icon"><i class="fas fa-check-circle"></i></div>
             <h3>Thank you, Princess!</h3>
-            <p>This is only a demo store. No real transaction has been made.</p>
-            <button class="continue-btn" onclick="closeSuccessModal()">Continue Shopping</button>
+            <p>Demo store – no real charge</p>
+            <button class="cont-btn" onclick="closeSuccModal()">Continue</button>
         </div>
     </div>
 
-    <!-- Orders Button -->
-    <div class="orders-button" onclick="openOrdersModal()">
+    <!-- Orders -->
+    <div class="orders-float" onclick="openOrders()">
         <i class="fas fa-list"></i>
         <span>My Orders</span>
     </div>
 
-    <!-- Overlay -->
-    <div class="overlay" id="overlay" onclick="closeAllModals()"></div>
+    <div class="modal" id="ordModal">
+        <div class="ord-box">
+            <div class="ord-head">
+                <h3>My Orders</h3>
+                <button class="close-modal" onclick="closeOrders()">&times;</button>
+            </div>
+            <div class="ord-list" id="ordersList"></div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeAll()"></div>
 
     <script src="aurevia.js"></script>
 </body>
-</html>
+    </html>
