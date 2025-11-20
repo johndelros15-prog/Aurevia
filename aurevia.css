@@ -252,3 +252,11 @@ body{
 /* ----------  ANIMATIONS  ---------- */
 .fade-in{opacity:0;transform:translateY(30px);transition:all .6s ease;}
 .fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* thank-you bubble override */
+.succ-box{
+    background: radial-gradient(circle at top, #ffe0ec 0%, #ffffff 100%);
+    border: 2px solid var(--pink-bubble);
+    border-radius: 30px;
+    padding: 50px;
+}
